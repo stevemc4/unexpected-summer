@@ -135,17 +135,20 @@ style window:
     xfill True
     yalign gui.textbox_yalign
     ysize gui.textbox_height
-
-    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
+    background Frame("gui/textbox.png", 1, 1, xmaximum=960)
+    bottom_margin 10
+    left_margin 20
+    left_padding -196
+    top_padding 10
 
 style namebox:
     xpos gui.name_xpos
     xanchor gui.name_xalign
     xsize gui.namebox_width
-    ypos gui.name_ypos
+    ypos (gui.name_ypos - 5)
     ysize gui.namebox_height
 
-    background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
+    # background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
     padding gui.namebox_borders.padding
 
 style say_label:
@@ -250,17 +253,25 @@ screen quick_menu():
         hbox:
             style_prefix "quick"
 
-            xalign 0.5
-            yalign 1.0
-
-            textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Save") action ShowMenu('save')
-            textbutton _("Q.Save") action QuickSave()
-            textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('preferences')
+            xalign 0.9
+            yalign 0.925
+            vbox:    
+                button:
+                    background Frame("gui/button/back-up.png", 1, 1) 
+                    hover_background Frame("gui/button/back-hover.png", 1, 1)
+                    selected_background Frame("gui/button/back-down.png", 1, 1)
+                    ymaximum (124/2)+5
+                    xmaximum 281/2
+                    bottom_margin 5
+                    action Rollback()
+                button:
+                    background Frame("gui/button/menu-up.png", 1, 1) 
+                    hover_background Frame("gui/button/menu-hover.png", 1, 1)
+                    selected_background Frame("gui/button/menu-down.png", 1, 1)
+                    ymaximum (124/2) + 5
+                    xmaximum 281/2
+                    top_margin 5
+                    action ShowMenu("preferences")
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -309,9 +320,6 @@ screen navigation():
 
             textbutton _("Save") action ShowMenu("save")
 
-        textbutton _("Load") action ShowMenu("load")
-
-        textbutton _("Preferences") action ShowMenu("preferences")
 
         if _in_replay:
 
@@ -324,9 +332,6 @@ screen navigation():
         textbutton _("About") action ShowMenu("about")
 
         if renpy.variant("pc"):
-
-            ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("Help") action ShowMenu("help")
 
             ## The quit button is banned on iOS and unnecessary on Android.
             textbutton _("Quit") action Quit(confirm=not main_menu)
@@ -386,7 +391,7 @@ style main_menu_frame:
     xsize 280
     yfill True
 
-    background "gui/overlay/main_menu.png"
+    #background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
     xalign 1.0

@@ -12,24 +12,33 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("test")
+define config.name = _("Unexpected Summer")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
 
-define gui.show_name = True
+define gui.show_name = False
 
 
 ## The version of the game.
 
-define config.version = "1.0"
+define config.version = "1.2"
 
 
 ## Text that is placed on the game's about screen. Place the text between the
 ## triple-quotes, and leave a blank line between paragraphs.
 
 define gui.about = _p("""
+Game Director: Putri Nur Alifa
+
+Story: Putri Nur Alifa, Pujianto Syamsuardin
+
+Game Programming: Dhika Rizky Agusta [XII RPL A]
+
+Art: Shihabudiin, Maura Azhura Faradiba, Razin Naji Allam [XII MM A], Zhifa Kayla Putri, Fayza Nisa K.
+
+Sound: Rizqy Syandana
 """)
 
 
@@ -37,7 +46,7 @@ define gui.about = _p("""
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "test"
+define build.name = "Unexpected_Summer"
 
 
 ## Sounds and music ############################################################
@@ -47,7 +56,7 @@ define build.name = "test"
 
 define config.has_sound = True
 define config.has_music = True
-define config.has_voice = True
+define config.has_voice = False
 
 
 ## To allow the user to play a test sound on the sound or voice channel,
