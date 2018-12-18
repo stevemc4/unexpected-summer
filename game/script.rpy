@@ -183,6 +183,8 @@ label start:
     r "Baiklah, Sebaiknya aku berteduh dari panas terik sebentar dan memesan jus buah, lalu aku akan ke pusat informasi untuk mencari Tenta"
     hide radon_smile2
     play sound "audio/bell.mp3"
+    stop music fadeout 1
+    play music "audio/cafe.mp3"
     "Akhirnya Radon masuk kedalam kedai jus tersebut"
     show halloween cafe
     "Tampilan dalam kedai tersebut sangatlah berbeda dengan tampilan luarnya. Tampilan dalamnya memiliki suasana {i}halloween{/i}, serba misterius dan para {i}staff{/i}nya juga serba gelap"
@@ -213,18 +215,19 @@ label start:
     return
 
 label end_a:
-        show radon_smile at center
-        r "Oh begitu ya..."
-        r "M-maaf tuan, Saya harus mencari adik Saya. Saya mohon permisi"
-        show radon_smile at left
-        show azure_smile at right
-        a "Baiklah, Terimakasih!"
-        hide radon_smile
-        hide azure_smile
-        scene cg out
-        ".:. END"
-
-return
+    show radon_smile at center
+    r "Oh begitu ya..."
+    r "M-maaf tuan, Saya harus mencari adik Saya. Saya mohon permisi"
+    show radon_smile at left
+    show azure_smile at right
+    a "Baiklah, Terimakasih!"
+    hide radon_smile
+    hide azure_smile
+    scene cg out
+    "Radon memutuskan untuk keluar dari kedai jus buah untuk menghindari masalah yang Ia takutkan dan melanjutkan mencari Tenta"
+    ".:. END"
+    jump credits
+    return
 
 label cont_a:
     show radon_confuse at center
@@ -284,7 +287,7 @@ label card_a:
     scene ending 1
     "Setelah menghabiskan jusnya, Radon terjatuh dan tewas" #menjadi abu
     ".:. END"
-    return
+    jump credits
 
 label card_b:
     call screen cardSelected("2")
@@ -323,7 +326,7 @@ label card_b:
     a "Kurung dia! Bawakan Ia ke lab agar bisa kujadikan eksperimen! *Tertawa jahat*"
     scene ending 2
     ".:. END"
-    return
+    jump credits
 label card_c:
     call screen cardSelected("3")
     show azure_smile at center
@@ -349,12 +352,18 @@ label card_c:
     pause .5
     t "KAKAK! TERNYATA KAMU DISINI!.... HAH?!.... DEWI?!"
     a "Baiklah, ayo kita selesaikan masalah ini!"
-    return
+    scene ending 3
+    "Radon berubah menjadi dewi berkat membuka kartu terakhir"
+    "Badannya bercahaya dan wujudnya berubah menjadi sosok yang berbeda"
+    "Disamping itu Azure, sang bartender, ternyata adalah musuh dari Dewi Buah yang sedang mencari keturunan setengah dewi di alam fana"
+    "Ia melakuan itu agar Ia dapat merebut cincin milik Dewi Buah pertama"
+    ".:. END"
+    jump credits
 
 
 
 label credits:
-    show screen about()
-
-
-
+    $ quick_menu = False
+    scene end
+    pause 10
+    return
